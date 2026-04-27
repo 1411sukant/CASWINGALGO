@@ -51,9 +51,9 @@ def fetch_global_sentiment():
     return avg_sentiment, headlines
 
 def process_stock_data(ticker):
-    """Fetches 5-minute data and calculates Intraday Indicators."""
-    # 5m interval is perfect for intraday scalping
-    df = yf.download(ticker, period="2d", interval="5m", progress=False)
+    """Fetches 5-minute data and calculates Intraday Technical Indicators."""
+    stock = yf.Ticker(ticker)
+    df = stock.history(period="2d", interval="5m")
     
     if df.empty:
         return None
